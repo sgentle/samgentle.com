@@ -1,0 +1,50 @@
+{{> header}}
+
+<script src="/static/js/coffee-script.js"></script>
+<script src="/static/js/raphael-min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/theme-textmate.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/mode-coffee.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/mode-html.js" type="text/javascript" charset="utf-8"></script>
+
+<section>
+  <script type="text/coffeescript">
+    code = markup = null
+    makeAceGo = (id, mode) ->
+      editor = ace.edit id
+      editor.setTheme "ace/theme/textmate"
+      session = editor.getSession()
+      session.setMode new (require("ace/mode/#{mode}").Mode) if mode
+      session.setTabSize 2
+      session.setUseSoftTabs true
+      editor
+
+    $(document).ready ->
+      code   = makeAceGo 'scriptbox', 'coffee'
+      markup = makeAceGo 'markupbox', 'html'
+      eval CoffeeScript.compile code.getSession().getValue()
+
+    $('#eval').click (ev) ->
+      $('#markup').html markup.getSession().getValue()
+      eval CoffeeScript.compile code.getSession().getValue()
+
+  </script>
+  <h1>{{title}}</h1>
+  <div id="markup">
+    {{{markup}}}
+  </div>
+</section>
+
+<section>
+  <h1>Edit this playground</h1>
+  <pre id='scriptbox' style='margin: 0px 8px; display: inline-block; position: relative; width: 500px; height: 500px;'>
+{{code}}
+  </pre>
+  <pre id='markupbox' style='margin: 0px 8px; display: inline-block; position: relative; width: 500px; height: 500px;'>
+{{markup}}
+  </pre>
+  <br />
+  <button id='eval'>Update</button> (Note: this is not saved anywhere)
+</section>
+
+{{> footer}}

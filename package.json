@@ -1,0 +1,9 @@
+{
+  "name": "samgentle",
+  "version": "0.0.0",
+  "dependencies": {
+    "couchapp": "^0.11.0",
+    "mustache": "^1.1.0"
+  },
+  "license": "MIT"
+}

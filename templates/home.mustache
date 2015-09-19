@@ -1,0 +1,20 @@
+{{> header}}
+
+{{#posts}}
+  {{> _post}}
+{{/posts}}
+
+{{#_nav}}
+  <nav>
+  {{#next}}
+  <a href="?skip={{next}}">Older</a>
+  {{/next}}
+
+  {{#prev}}
+  <a href="?skip={{prev}}">Newer</a>
+  {{/prev}}
+  </nav>
+{{/_nav}}
+
+
+{{> footer}}

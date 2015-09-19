@@ -1,0 +1,11 @@
+coffee-script.js: https://github.com/jashkenas/coffeescript (MIT)
+
+ace.js: https://github.com/ajaxorg/ace (BSD)
+worker-coffee.js
+mode-coffee.js
+mode-html.js
+theme-textmate.js
+
+prism.js: https://github.com/PrismJS/prism (MIT)
+
+raphael-min.js: https://github.com/DmitryBaranovskiy/raphael/ (MIT)

@@ -1,0 +1,342 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figure, figcaption, hgroup, menu, footer, header, nav, section, summary, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+
+article, aside, canvas, figure, figure img, figcaption, hgroup, footer, header, nav, section, audio, video
+  display: block
+
+a img
+  border: 0
+
+figure
+  position: relative
+
+figure img
+  width: 100%
+
+
+/*
+  Generic useful functions
+*/
+
+prefixify(prop, args...)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
+  {prop} args
+
+/*
+  Browser prefix functions
+*/
+
+
+border-image(args...)
+  prefixify 'border-image' args
+
+column-width(args...)
+  prefixify 'column-width' args
+
+column-gap(args...)
+  prefixify 'column-gap' args
+
+column-span(args...)
+  prefixify 'column-span' args
+
+user-select(args...)
+  prefixify 'user-select' args
+
+
+/*
+  Font presets
+*/
+
+gigantic()
+  font-size: 123px;
+  letter-spacing: -2px;
+
+huge()
+  font-size: 76px;
+  letter-spacing: -1px;
+
+large()
+  font-size: 47px;
+
+bigger()
+  font-size: 29px;
+
+big()
+  font-size: 25px;
+
+normal()
+  font-size: 18px
+  line-height: 1.33
+
+small()
+  font-size: 13px
+
+
+/*
+  Overly general CSS for stupid IE6
+*/
+
+h1
+  huge()
+  font-family 'Whiteboard Modern', sans-serif
+
+article h1,
+  large()
+  font-family 'Josefin Sans', sans-serif
+
+
+
+
+/*
+  Special boxes
+*/
+
+#dne
+  position: absolute
+  width: 84px
+  top: 0px
+  right: 0px
+  padding-top: 4px
+  font-size: 26px
+  line-height: 20px
+  text-align: center
+  font-family: 'Whiteboard Modern', cursive
+  border-style: solid
+  border-width: 0px 0px 12px 12px
+  border-image: url("../images/box-red.png") 48 48 24 24 stretch
+  color: hsla(0, 100%, 70%, 1)
+  user-select: none
+
+#dnecanvas
+  position: absolute
+  top: 0px
+  left: -12px
+
+
+
+body > header > h1
+  huge()
+
+  line-height: 1
+  margin-bottom: 36px
+  color: black
+  //color: RGBA(50,50,255,1)
+  font-family: 'Whiteboard Modern', cursive
+  display: inline-block
+  border-style: solid
+  border-width: 0px 24px 12px 0px
+  border-image: url("../images/underline.png") 0 35 14 0 stretch
+
+  span
+    big()
+
+
+body
+  font-family 'Josefin Sans', sans-serif
+  normal()
+
+wb-border-box(col, size=48)
+  border-image: url("../images/box-"+col+".png") size size size size stretch
+
+article:nth-child(3n+1), section:nth-child(3n+1)
+  wb-border-box: 'blue'
+
+article:nth-child(3n+2), section:nth-child(3n+2)
+  wb-border-box: 'red'
+
+article:nth-child(3n), section:nth-child(3n)
+  wb-border-box: 'green'
+
+
+@media only screen and (min-width: 1212px)
+  section.project:nth-child(6n+4)
+    wb-border-box: 'red'
+
+  section.project:nth-child(6n+5)
+    wb-border-box: 'green'
+
+  section.project:nth-child(6n+6)
+    wb-border-box: 'blue'
+
+
+  section.project:nth-child(9n+7)
+    wb-border-box: 'green'
+
+  section.project:nth-child(9n+8)
+    wb-border-box: 'blue'
+
+  section.project:nth-child(9n+9)
+    wb-border-box: 'red'
+
+
+h2
+  clear: left
+  margin-top: 24px
+
+h1 a
+  text-decoration: none
+  color: inherit
+
+article,section
+  border-style: solid
+  border-width: 48px 48px 48px 48px
+  margin: 0px -48px
+
+  h1
+    large()
+    font-family 'Josefin Sans', sans-serif
+    margin-bottom: 24px
+
+  > footer
+    margin-top: 24px
+    font-size: 18px
+
+.columns
+  column-width: 288px
+  column-gap: 24px
+  text-align: justify
+
+  > hr
+    column-span: all
+    border: 1px solid transparent
+
+  > h1
+    column-span: all
+
+  > h2
+    big()
+    column-span: all
+    margin: 36px 0px 8px 0px
+
+:not(pre) > code
+  font-family: 'Andale Mono',monospace
+  background-color: rgba(69, 142, 209, 0.04)
+  font-size: 80%
+
+p
+  margin-bottom: 1em
+
+.block
+  display: block
+  margin: 1em auto
+  max-width: 100%
+
+blockquote
+  margin: 1em 2em
+  text-align: justify
+blockquote:before,blockquote:after
+    large()
+    vertical-align: -0.4em
+    line-height: 0.1em
+    font-family: 'Whiteboard Modern',sans-serif
+blockquote:before
+    content: open-quote
+blockquote:after
+    content: close-quote
+
+cite
+  margin-right: 0.1em
+
+dl
+  margin-bottom: 1em
+
+ul
+  margin-bottom: 1em
+  margin-left: 1em
+
+dt
+  font-weight: bold
+
+dd
+  margin-left: 2em
+
+div.projects
+  margin: 0px -64px 1em -32px
+  overflow: hidden
+
+section.project
+  float: left
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  border-width: 32px
+  width: 260px
+  height: 240px
+  margin: 16px 32px 0px 0px
+
+  a
+    text-decoration: none
+    color: inherit
+
+
+  h1
+    text-align: center
+    font-size: 1.5em
+    margin-bottom: 16px
+    flex: 0
+
+  img
+    display: block
+    margin: 1em auto
+    max-width: 100%
+    max-height: 140px
+    flex: 1 1 auto
+
+  div
+    flex: 0 1 auto
+
+  div.award
+    font-style: italic
+
+@font-face
+  font-family: 'Whiteboard Modern'
+  src: url('../fonts/whiteboard-modern-webfont.eot?') format('eot'), url('../fonts/whiteboard-modern-webfont.woff') format('woff'), url('../fonts/whiteboard-modern-webfont.ttf') format('truetype'), url('../fonts/whiteboard-modern-webfont.svg#webfontxFGqCYaf') format('svg')
+  font-weight: normal
+  font-style: normal
+
+body
+  background: white
+  padding: 84px 60px 0
+  width: 648px
+  margin: 0px auto
+
+@media only screen and (min-width: 1212px)
+  body
+    padding: 72px 72px 0
+    width: 1068px
+  section.project
+    width: 292px
+    height: 280px
+
+@media only screen and (max-width: 767px) and (min-width: 480px)
+  body
+    padding: 60px 42px 0
+    width: 396px
+    -webkit-text-size-adjust: 100%
+
+  div.projects
+    margin: 0
+
+  body > header > h1
+    font-size: 48px
+    line-height: 42px
+
+@media only screen and (max-width: 479px)
+  body
+    padding: 48px 46px 0
+    width: 228px
+    -webkit-text-size-adjust: 100%
+
+  body > header > h1
+    font-size: 48px
+    line-height: 42px
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+  #example
+    //background: rgb(255,158,97)
+

@@ -1,0 +1,82 @@
+==================================================================
+https://keybase.io/sgentle
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://samgentle.com
+  * I am sgentle (https://keybase.io/sgentle) on keybase.
+  * I have a public key with fingerprint DE22 29B5 2F68 37CA 370C  85B4 29CA 85AE 3B87 C23B
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.7.7"
+        },
+        "key": {
+            "fingerprint": "de2229b52f6837ca370c85b429ca85ae3b87c23b",
+            "host": "keybase.io",
+            "key_id": "29CA85AE3B87C23B",
+            "uid": "79b779c1a7a81416ed6f1d1fafe69500",
+            "username": "sgentle"
+        },
+        "merkle_root": {
+            "ctime": 1425716007,
+            "hash": "6d35bb7f6deff47b250076dc03bf79c9164b303fa8f6d1ac0995da0ae233e3f7b87919ce4a039b7258abc88e378d674e602b9fe228d23bf4bf8198845050e1f2",
+            "seqno": 173431
+        },
+        "service": {
+            "hostname": "samgentle.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1425716760,
+    "expire_in": 157680000,
+    "prev": "46eec766fb8f4c7ad4c28dddf39bf9de414fd555e010fedfa735e44ef3858a6a",
+    "seqno": 9,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Comment: GPGTools - https://gpgtools.org
+
+owFVkntQFWUYxg+KFgwpUR0uiTJbyUBH3Pu3e0hn5FbTwExphkMas5fvOywezh7O
+jQOEU1yUQAGpNAL0OKWCf0gSkBfqjMxoDmBecnI0pchmoFRqKhhM0r4lnHL/2t33
++Z73+b3v1/TYfFN4SNJgzeHUbQOpIUM/y6bX/upbVk7IulpKWMsJxa5Bh8d4c0hF
+kLASm2GpLLlhiqYnOHQVphS6E+Y0FsIHXW5Nd2AVmQJSAFFhMeTGYaQ5bNDldGmG
+F6FCmqZFmaMRLzBAkRhAKgIns7SoSAInQUYWgEIzMrYs0N2eh7oSs575mor/0mL6
+GoFbk8mkCSCdZtJwzTtbAKIMgKhQEpAEiqV4qPKIUikkIciLHEkaQjd0zSG5bTi+
+HRpxi6Brsx3mu3R9llnxaIaCYmkOUDxJAhxIchfgM7zKcLIMEK9ChFgg09gV8KpC
+MjLCnUWKZ2WGZJAkYAklKaQocqpESpBmGMgggAlFSlQgK5EMDktzgiQrggAZIKg8
+YCFP0rKI8JwEFQ8CsTISKFEQWI7kSEghGhO4YbFDx+EAwzJUhfHt8mkKNHIbU3sA
+JxX9i5ei6EX4lNOle3RFt+NSgcfjdFsNbE+p09CWQPlw/pxNvqw5VLy1/6/V6PLw
+SABPWgjod2oumK8ZCg7wAokfoxH0YU+Wh1ABPI9kAbEKkFRWwUyqijA2ElXIUixS
+OY6DJEUiqCIJMBxkWYgYAc+El/4DFXFOyWYgaTaH5PG68Mbenbck1BQSblq4YJ5x
+b03hYZEPLvMYEWm6RJYyx32+XatmKrPNU/Of1EqrM0+WuDOWblgSsa0lgigrXXP6
+0Ofx49+aBpK0mq4enns/viTnif7jE+u+r8rbNDQZDK7lnWFVf9+7Xb/S2zjqOx01
+8bs18CiVG7Y7GDA/l3BL33uTOrVTuhxhWV3YyLwS1lLmWPFb4fY6cnnw0B5hfWJg
+z75FMVvNbVc6D5Qn19/snn6qdZ+J7PY35Qyt/GL/hvAT3lQ1oyo3UMMVfj26aHF0
+ZE/22CKuyd42nvXiKnt6YWuXhSd6ibvWgeFNkUe6bN3+N3uirfHa4OjuNzzc0Vsg
+8NXGa83rzGWJtrPZn109NeO8dGEp278jQZ/cgl69aG2NSh2prZxuz/4hmpho9vb3
+dvzReXewZfLy2rrhnpdGNn6z+mXT64P0cENc3oXh4k6zPTiix3/iXzV4Vj9cf+Dq
+zoaLW2P6Ki0zK2Tz9K7UuNEj/e3XY2+fmPbWPp0z0rp25Me+q6EL/I9nRQlb2tSo
+P+9kVFa/MH0veTQjdnDx2x+/9U56eV7zwbRfJkPpsM77Ux8l0tdr3e3n/daYKyds
+EUeXH8pwjfu/qzj2aUPgQkeMvXH/mO3kQfuzd873SjEJ95+h1p87l4m2L/Mdq7px
+o2ZH/d6NPy3rKPbHSb7W9yqSy47Fht79Ejxf7X+kbk9ScknW5eCHH1y7tJAPD/l1
+6syZ3KVJ/wA=
+=q6xs
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/sgentle
+
+==================================================================

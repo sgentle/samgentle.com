@@ -1,0 +1,169 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script type="text/javascript">
+
+//Unpacks query data into a full tree, using ':' as heirarchy separator
+function getUrlVarsToTree() {
+    var urlvars = new Object();
+    var pairs = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+
+    for(var i=0; i<pairs.length; i++) {
+        var key = pairs[i].split('=')[0], val = pairs[i].split('=')[1];
+	      var node = urlvars;
+        var subkeys = key.split(':');
+
+        //Traverse down the tree, creating nodes if needed
+        for (var j=0; j<subkeys.length-1; j++) {
+            var subkey = subkeys[j];
+            if (node[subkey] == undefined) {
+                node[subkey] = new Object();
+            }
+            node = node[subkey];
+        }
+
+        //Set the variable where we end up
+        node[subkeys[subkeys.length-1]] = val;
+    }
+
+    return urlvars;
+}
+
+function onYouTubePlayerReady(ytapiid) {
+    vid = urlvars[ytapiid.substr(4)]; //remove "item" to get numeric id
+    document.getElementById(ytapiid).setVolume(vid.volume || 100)
+}
+
+window.soundcloud = Object();
+window.soundcloud.onPlayerReady = function(playerid, data) {
+    item = urlvars[playerid.substr(4)]; //remove "item" to get numeric id
+    if (item.autoplay || item.autoplay == undefined) {
+        document.getElementById(playerid).api_play();
+    }
+    if (item.start) {
+        document.getElementById(playerid).api_seekTo(item.start);
+    }
+    if (item.volume) {
+        document.getElementById(playerid).api_setVolume(item.volume);
+    }
+};
+
+//Add a container div - this is needed for embedswf and potentially useful elsewhere
+function addContainerDiv(item) {
+    var divid = item.id + "div";
+    var newdiv = document.createElement("div");
+    var itemcontainer = document.getElementById("itemcontainer");
+    newdiv.setAttribute("id",divid);
+    itemcontainer.appendChild(newdiv);
+    return divid;
+}
+
+function addNewLineItem(item) {
+    var itemcontainer = document.getElementById("itemcontainer");
+    itemcontainer.appendChild(document.createElement("br"));
+}
+
+function addImgurItem(item) {
+    var itemcontainer = document.getElementById("itemcontainer");
+
+    //Link to detail page (url minus extension)
+    var a = document.createElement("a");
+    a.setAttribute("href","https://imgur.com/" + escape(item.imgur).split(".")[0]);
+
+    var img = document.createElement("img");
+    img.setAttribute("id",item.id);
+    img.setAttribute("src","https://i.imgur.com/" + escape(item.imgur));
+    if (item.width) { img.setAttribute("width",item.width); }
+    if (item.height) { img.setAttribute("height",item.height); }
+    a.appendChild(img);
+    itemcontainer.appendChild(a);
+}
+
+function addSoundCloudItem(item) {
+    var divid = addContainerDiv(item);
+
+    swfobject.embedSWF("https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2F"+item.soundcloud+
+                       "&enable_api=true"+
+                       "&object_id="+item.id,
+                divid,
+                item.width || "425",
+                item.height || "81", "8",
+                null, null, {allowScriptAccess: "always"}, {id: item.id});
+
+}
+
+function addYouTubeItem(item) {
+    if (item.hidevideo) {
+        item.height = "25";
+    }
+
+    var divid = addContainerDiv(item);
+
+    swfobject.embedSWF("https://www.youtube.com/v/"+item.youtube+
+                       "?enablejsapi=1"+
+                       "&playerapiid="+item.id+
+                       "&autoplay="+(item.autoplay || 1)+
+                       "&showinfo="+(item.showinfo || 0)+
+                       "&loop="+(item.loop || 0)+
+                       "&start="+(item.start || 0),
+                divid,
+                item.width || "425",
+                item.height || "356", "8",
+                null, null, {allowScriptAccess: "always"}, {id: item.id});
+}
+
+function addItems() {
+    if (urlvars.videos && !urlvars.items) {
+        urlvars.items = urlvars.videos // Backwards compatibility
+    }
+    for(var i=0; i<urlvars.items; i++) {
+        var item = urlvars[i];
+
+        if (item.id) item.youtube = item.id; // Backwards compatibility
+
+        item.id = "item"+i;
+
+        if (item.youtube) { addYouTubeItem(item); }
+        if (item.imgur) { addImgurItem(item); }
+        if (item.soundcloud) { addSoundCloudItem(item); }
+        if (item.newline) { addNewLineItem(item); }
+    }
+}
+
+
+urlvars = getUrlVarsToTree();
+
+window.onload = addItems;
+
+</script>
+<title>"Interweb Mashup!"</title>
+</head>
+<body>
+<h1>Interweb Mashup!</h1>
+<div id="itemcontainer"></div>
+
+<br />
+<div>
+Make your own interweb mashup! https://www.samgentle.com/interwebmashup/?items=[number]&0:youtube=[id]&1:imgur=[id]&1:height=500px etc...<br />
+
+Supported mashy services:
+<ul>
+<li><a href="https://www.youtube.com">YouTube</a> <a href="?items=1&0:youtube=a1Y73sPHKxw">(:youtube=a1Y73sPHKxw)</a></li>
+<li><a href="https://imgur.com">Imgur</a> <a href="?items=1&0:imgur=2KhIt.jpg">(:imgur=2KhIt.jpg)</a></li>
+<li><a href="https://www.soundcloud.com">SoundCloud</a> <a href="?items=1&0:soundcloud=bootie/best-of-bootie-2009-v-2&0:start=35">(:soundcloud=bootie/best-of-bootie-2009-v-2)</a></li>
+</ul>
+
+Supported parameters:
+<ul>
+<li>:width</li>
+<li>:height</li>
+<li>:volume (0 to 100)</li>
+<li>:autoplay (0 to disable)</li>
+<li>:start (time in seconds)</li>
+<li>:loop (1 to enable) <strong>[YouTube only]</strong></li>
+<li>:hidevideo (1 to just play audio) <strong>[YouTube only]</strong></li>
+<li>:newline (1 to add a line break afterwards)</li>
+</ul>
+
+Bug reports, feature requests, Nigerian business proposals etc to <a href="mailto:sam@samgentle.com">sam@samgentle.com</a>
+</div>

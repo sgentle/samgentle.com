@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Sam Gentle.com</title>
+  <link href="https://samgentle.com" />
+  <link href="https://samgentle.com/feed/" rel="self" />
+  <id>https://samgentle.com/</id>
+  <updated>{{_latest}}</updated>
+
+  <author>
+    <name>Sam Gentle</name>
+    <email>sam@samgentle.com</email>
+    <uri>https://samgentle.com</uri>
+  </author>
+
+  {{#posts}}
+  <entry>
+    <id>https://samgentle.com/{{_id}}</id>
+    <title>{{title}}</title>
+    <link type="text/html" href="/{{_id}}"/>
+    <updated>{{created}}</updated>
+    <content type="html"><![CDATA[
+      {{{body}}}
+    ]]></content>
+  </entry>
+  {{/posts}}
+
+</feed>

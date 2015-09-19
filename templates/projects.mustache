@@ -1,0 +1,23 @@
+{{> header}}
+
+{{_by_year_as_json}}
+
+{{#_by_year}}
+<div class="projects">
+<header>
+  <h2>{{year}}</h2>
+</header>
+{{#projects}}
+  <section class="project">
+    <h1><a href="{{link}}">{{{name}}}</a></h1>
+    <div><a href="{{link}}"><img src="{{image}}"></a></div>
+    <div>{{{description}}}</div>
+    {{#awards}}
+    <div class="award">{{.}}</div>
+    {{/awards}}
+  </section>
+{{/projects}}
+</div>
+{{/_by_year}}
+
+{{> footer}}

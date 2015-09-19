@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://samgentle.com</loc>
+    <lastmod>{{_latest}}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  {{#posts}}
+  <url>
+    <loc>https://samgentle.com/{{_id}}</loc>
+    <lastmod>{{created}}</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  {{/posts}}
+</urlset>

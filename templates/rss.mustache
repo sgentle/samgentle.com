@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+ <title>Sam Gentle.com</title>
+ <description>Sam Gentle.com</description>
+ <link>https://samgentle.com</link>
+ <lastBuildDate>{{_latest_friendly}}</lastBuildDate>
+
+{{#posts}}
+ <item>
+  <title>{{title}}</title>
+  <link>https://samgentle.com/{{_id}}</link>
+  <guid isPermaLink="true">https://samgentle.com/{{_id}}</guid>
+  <pubDate>{{_created_friendly}}</pubDate>
+  <description><![CDATA[
+    {{{body}}}
+  ]]></description>
+ </item>
+{{/posts}}
+
+</channel>
+</rss>
