@@ -70,6 +70,7 @@ app.lists
 app.shows
   tmpl: (doc, req) ->
     if @templates[doc.type]
+      doc._future = doc.created > new Date().toISOString()
       mustache = require 'modules/mustache'
       mustache.to_html @templates[doc.type], doc, @templates
     else

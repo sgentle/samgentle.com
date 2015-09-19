@@ -5,7 +5,8 @@
   {{{body}}}
 
   <footer>
-    Posted
+    {{#_future}}To be posted{{/_future}}
+    {{^_future}}Posted{{/_future}}
     <time datetime="{{created}}" pubdate>
       {{created}}
     </time>
