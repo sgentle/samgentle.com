@@ -25,7 +25,7 @@ app.views
     map: (doc) ->
       type = doc._id.split('/')[0]
       now = new Date().toISOString()
-      emit [type, doc.created_at], doc if type? and !doc.created or doc.created <= now
+      emit [type, doc.created], doc if type? and !doc.created or doc.created <= now
 
 app.lists
   tmpl: (head, req) ->
