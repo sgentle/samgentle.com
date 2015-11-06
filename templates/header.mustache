@@ -2,7 +2,7 @@
 <html lang="en">
 
 	<head>
-		<meta charset="utf-8"/>
+		<meta charset="utf-8">
 		<title>
 		{{#title}}
 			{{title}} - Sam Gentle.com
@@ -16,11 +16,15 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 
+		{{#_canonical}}
+			<link rel="canonical" href="{{{_canonical}}}">
+		{{/_canonical}}
+
 		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,600' rel='stylesheet' type='text/css'>
-		<link rel="alternate" type="application/atom+xml" title="Feed" href="/feed" />
-		<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss" />
-		<link rel="stylesheet" media="all" href="/static/css/samgentle.css"/>
-		<meta name="viewport" content="width=device-width; initial-scale=1"/>
+		<link rel="alternate" type="application/atom+xml" title="Feed" href="/feed">
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss">
+		<link rel="stylesheet" media="all" href="/static/css/samgentle.css">
+		<meta name="viewport" content="width=device-width; initial-scale=1">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="/static/js/samgentle.js"></script>
