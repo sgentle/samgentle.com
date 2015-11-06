@@ -1,4 +1,4 @@
-drawing = false;
+drawing = false
 
 stopDrawing = -> drawing = false; return
 startDrawing = (evt) ->
@@ -27,18 +27,18 @@ draw = (evt) ->
 circle = (ctx, x, y, colour) ->
   ctx.save()
   ctx.beginPath()
-  ctx.arc x, y, 15, 0, Math.PI*2, true
+  ctx.arc x, y, 15, 0, Math.PI * 2, true
   ctx.closePath()
   ctx.clip()
-  ctx.fillStyle = colour;
+  ctx.fillStyle = colour
   ctx.fill()
   ctx.restore()
 
 $(document).ready ->
   canvas = $('#dnecanvas')
-  canvas.on "mousedown touchstart", startDrawing
-  canvas.on "mousemove touchmove", draw
-  $(document).on "mouseup touchend", stopDrawing
+  canvas.on 'mousedown touchstart', startDrawing
+  canvas.on 'mousemove touchmove', draw
+  $(document).on 'mouseup touchend', stopDrawing
 
   locale = navigator.languages?[0]
 

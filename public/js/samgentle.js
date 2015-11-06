@@ -65,9 +65,9 @@
   $(document).ready(function() {
     var canvas, locale, ref;
     canvas = $('#dnecanvas');
-    canvas.on("mousedown touchstart", startDrawing);
-    canvas.on("mousemove touchmove", draw);
-    $(document).on("mouseup touchend", stopDrawing);
+    canvas.on('mousedown touchstart', startDrawing);
+    canvas.on('mousemove touchmove', draw);
+    $(document).on('mouseup touchend', stopDrawing);
     locale = (ref = navigator.languages) != null ? ref[0] : void 0;
     return $('time').each(function(i, el) {
       return $(el).text(new Date($(el).attr('datetime')).toLocaleString(locale));
