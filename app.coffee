@@ -34,7 +34,7 @@ app.lists
     data._nav.next = Number(q.skip || 0) + Number(q.limit)
     data._nav.prev = if Number(q.skip) >= Number(q.limit) then Number((q.skip || 0)) - Number(q.limit)
     data._nav.prev += '' if data._nav.prev?
-    if (vhostpath = req.headers["x-couchdb-vhost-path"])
+    if (vhostpath = req.headers['x-couchdb-vhost-path'])
       data._canonical = 'https://samgentle.com' + vhostpath
 
     by_year = {}
@@ -74,7 +74,7 @@ app.shows
   tmpl: (doc, req) ->
     if @templates[doc.type]
       doc._future = doc.created > new Date().toISOString()
-      if (vhostpath = req.headers["x-couchdb-vhost-path"])
+      if (vhostpath = req.headers['x-couchdb-vhost-path'])
         doc._canonical = 'https://samgentle.com' + vhostpath
 
       mustache = require 'modules/mustache'
