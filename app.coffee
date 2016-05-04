@@ -83,8 +83,9 @@ app.shows
       # Better error reporting with HTTP codes?
       JSON.stringify {error: 'query_error', reason: "no such template #{doc.type}"}
 
-app.ddoc.validate_doc_update = (newDoc, oldDoc, userCtx) ->
-  if (userCtx.roles.indexOf('_admin') == -1)
-    throw unauthorized: 'Only admin can modify documents on this database.'
+app.ddoc.validate_doc_update = (newDoc, oldDoc, userCtx, secObj) ->
+  if (userCtx.roles.indexOf('_admin') == -1) and
+    ((secObj?.admins?.names or []).indexOf(userCtx.name) == -1)
+      throw unauthorized: 'Only admin can modify documents in this database.'
 
 module.exports = app.ddoc
