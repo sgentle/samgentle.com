@@ -1,12 +1,9 @@
 <article class="post">
-  <header>
-    <h1><a href="/{{_id}}" rel="bookmark">{{{title}}}</a></h1>
-  </header>
+  <h1><a href="/{{_id}}" rel="bookmark">{{{title}}}</a></h1>
+
   {{{body}}}
 
   <footer>
-    {{#_future}}To be posted{{/_future}}
-    {{^_future}}Posted{{/_future}}
     <time datetime="{{created}}" pubdate>
       {{created}}
     </time>

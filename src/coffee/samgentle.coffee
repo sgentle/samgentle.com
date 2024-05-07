@@ -1,28 +1,30 @@
 drawing = false
 
 stopDrawing = -> drawing = false; return
-startDrawing = (evt) ->
-  evt.preventDefault()
+startDrawing = (ev) ->
+  ev.preventDefault()
   drawing = true
-  draw evt
+  draw ev
 
-draw = (evt) ->
+draw = (ev) ->
   if drawing
-    evt.preventDefault()
+    ev.preventDefault()
 
-    ctx = evt.target.getContext '2d'
-    offset = $(evt.target).offset()
+    ctx = ev.target.getContext '2d'
+    left = ev.target.offsetLeft
+    top = ev.target.offsetTop
 
-    touches = [evt] if !touches = evt.originalEvent.touches
-    points = ({x: touch.pageX - offset.left, y: touch.pageY - offset.top} for touch in touches)
+    for touch in ev.touches or [ev]
+      x = touch.offsetX
+      y = touch.offsetY
 
-    circle ctx, x, y, 'RGBA(255,255,255,1)' for {x, y} in points
+      circle ctx, x, y, 'RGBA(255,255,255,1)'
 
-    window.setTimeout ->
-      ctx.globalCompositeOperation = 'copy'
-      circle ctx, x, y, 'RGBA(255,255,255,0)' for {x, y} in points
-      ctx.globalCompositeOperation = 'source-over'
-    , 2000
+      window.setTimeout ->
+        ctx.globalCompositeOperation = 'copy'
+        circle ctx, x, y, 'RGBA(255,255,255,0)'
+        ctx.globalCompositeOperation = 'source-over'
+      , 2000
 
 circle = (ctx, x, y, colour) ->
   ctx.save()
@@ -34,13 +36,18 @@ circle = (ctx, x, y, colour) ->
   ctx.fill()
   ctx.restore()
 
-$(document).ready ->
-  canvas = $('#dnecanvas')
-  canvas.on 'mousedown touchstart', startDrawing
-  canvas.on 'mousemove touchmove', draw
-  $(document).on 'mouseup touchend', stopDrawing
+$ = document.querySelector.bind(document)
+$$ = document.querySelectorAll.bind(document)
 
-  locale = navigator.languages?[0]
+canvas = $('#dnecanvas')
+canvas.addEventListener 'mousedown', startDrawing
+canvas.addEventListener 'touchstart', startDrawing
+canvas.addEventListener 'mousemove', draw
+canvas.addEventListener 'touchmove', draw
+canvas.addEventListener 'mouseup', stopDrawing
+canvas.addEventListener 'touchend', stopDrawing
 
-  $('time').each (i, el) ->
-    $(el).text new Date($(el).attr('datetime')).toLocaleString(locale)
+locale = navigator.languages?[0]
+
+for el in $$('time')
+  el.textContent = new Date(el.getAttribute('datetime')).toLocaleDateString(locale, timeZone: 'UTC')

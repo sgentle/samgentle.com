@@ -8,27 +8,7 @@
 <script src="/static/js/mode-html.js" type="text/javascript" charset="utf-8"></script>
 
 <section>
-  <script type="text/coffeescript">
-    code = markup = null
-    makeAceGo = (id, mode) ->
-      editor = ace.edit id
-      editor.setTheme "ace/theme/textmate"
-      session = editor.getSession()
-      session.setMode new (require("ace/mode/#{mode}").Mode) if mode
-      session.setTabSize 2
-      session.setUseSoftTabs true
-      editor
 
-    $(document).ready ->
-      code   = makeAceGo 'scriptbox', 'coffee'
-      markup = makeAceGo 'markupbox', 'html'
-      eval CoffeeScript.compile code.getSession().getValue()
-
-    $('#eval').click (ev) ->
-      $('#markup').html markup.getSession().getValue()
-      eval CoffeeScript.compile code.getSession().getValue()
-
-  </script>
   <h1>{{title}}</h1>
   <div id="markup">
     {{{markup}}}
@@ -46,5 +26,28 @@
   <br />
   <button id='eval'>Update</button> (Note: this is not saved anywhere)
 </section>
+
+<script type="text/coffeescript">
+  makeAceGo = (id, mode) ->
+    editor = ace.edit id
+    editor.setTheme "ace/theme/textmate"
+    session = editor.getSession()
+    session.setMode new (require("ace/mode/#{mode}").Mode) if mode
+    session.setTabSize 2
+    session.setUseSoftTabs true
+    editor
+
+  code   = makeAceGo 'scriptbox', 'coffee'
+  markup = makeAceGo 'markupbox', 'html'
+
+  $ = document.querySelector.bind(document)
+
+  eval CoffeeScript.compile code.getSession().getValue()
+
+  $('#eval').click (ev) ->
+    $('#markup').innerHtml = markup.getSession().getValue()
+    eval CoffeeScript.compile code.getSession().getValue()
+
+</script>
 
 {{> footer}}

@@ -1,100 +1,292 @@
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figure, figcaption, hgroup, menu, footer, header, nav, section, summary, time, mark, audio, video
+html, body
   margin: 0
   padding: 0
   border: 0
 
-article, aside, canvas, figure, figure img, figcaption, hgroup, footer, header, nav, section, audio, video
-  display: block
+html
+  font-size: 22px
+  overflow-x: hidden
 
 a img
   border: 0
 
-figure
-  position: relative
+h2
+  clear: left
+  margin-top: 24px
 
-figure img
-  width: 100%
+h1 a
+  text-decoration: none
+  color: inherit
 
+fontscale(n)
+  ((3 + n)/3)rem
 
-/*
-  Generic useful functions
-*/
-
-prefixify(prop, args...)
-  -webkit-{prop} args
-  -moz-{prop} args
-  -ms-{prop} args
-  -o-{prop} args
-  {prop} args
-
-/*
-  Browser prefix functions
-*/
-
-
-border-image(args...)
-  prefixify 'border-image' args
-
-column-width(args...)
-  prefixify 'column-width' args
-
-column-gap(args...)
-  prefixify 'column-gap' args
-
-column-span(args...)
-  prefixify 'column-span' args
-
-user-select(args...)
-  prefixify 'user-select' args
-
-
-/*
-  Font presets
-*/
-
-gigantic()
-  font-size: 123px;
-  letter-spacing: -2px;
-
-huge()
-  font-size: 76px;
-  letter-spacing: -1px;
-
-large()
-  font-size: 47px;
-
-bigger()
-  font-size: 29px;
-
-big()
-  font-size: 25px;
-
-normal()
-  font-size: 18px
-  line-height: 1.33
-
-small()
-  font-size: 13px
-
-
-/*
-  Overly general CSS for stupid IE6
-*/
-
-h1
-  huge()
-  font-family 'Whiteboard Modern', sans-serif
-
-article h1,
-  large()
+body
   font-family 'Josefin Sans', sans-serif
+  font-weight: 300
+  // letter-spacing: -0.33px
+  letter-spacing: (-11/600)em
+  // letter-spacing: (-1/30)em
+  // letter-spacing: (-8/300)em
+  // word-spacing: 0.05em
+  line-height: (4/3)
+  background: white
+  padding: 84px 60px 0
+  margin: 0px auto
+
+header
+  display: flex
+  justify-content: space-between
+  align-items: baseline
+  flex-wrap: wrap
+  margin-bottom: 1em
+
+  h1
+    display: inline-block
+    margin: 0 -16px 0.5em 8px
+
+    font-family: 'Whiteboard Modern', cursive
+    font-size: fontscale(6)
+    font-weight: 400
+    line-height: 1
+    text-align: center
+
+    border-style: solid
+    border-width: 0px 16px 4px 16px
+    border-image: url("../images/underline.png") 0 36 16 0 / 0 16px 8px 8px stretch
+
+    span
+      font-size: 0.5em
+
+  nav
+    font-size: fontscale(1)
+
+    display: flex
+    justify-content: space-between
+    font-family: 'Whiteboard Modern', cursive
+
+    a
+      display: inline-block
+      text-decoration: none
+      color: inherit
+      border-style: solid
+      border-width: 0px 0px 8px 0px
+      border-image: url("../images/box-red.png") 0 22 8 272 stretch;
+      margin-left: 0.75em
+    a:first-child
+      margin-left: 0
+
+article,section
+  border-style: solid
+  border-width: 16px
+  margin: 0px -16px 48px
+  padding: 1.5em 1em 0
+  overflow-x: hidden
+
+  h1
+    font-size: fontscale(4)
+    font-family 'Josefin Sans', sans-serif
+    font-weight: 300
+    font-variant: small-caps
+    letter-spacing: (-1/30)em
+
+    margin: 0 0 0.5em -3.33px
+
+  footer
+    text-align: right
+
+
+:not(pre) > code
+  font-family: 'Andale Mono',monospace
+  background-color: rgba(69, 142, 209, 0.04)
+  font-size: 80%
+
+p
+  margin-bottom: (5/3)em
+
+.block
+  display: block
+  margin: 2em auto
+  max-width: 100%
+
+  img
+    max-width: 100%
+
+blockquote
+  margin: 1em 2em
+  text-align: justify
+
+blockquote:before,blockquote:after
+    font-size: fontscale(5)
+    vertical-align: -0.4em
+    line-height: 0.1em
+    font-family: 'Whiteboard Modern',sans-serif
+
+blockquote:before
+    content: open-quote
+
+blockquote:after
+    content: close-quote
+
+cite
+  margin-right: 0.1em
+
+
+ul
+  margin-bottom: 1em
+  margin-left: 1em
+
+dl
+  margin-bottom: 1em
+
+dt
+  font-weight: 400
+
+dd
+  margin-left: 2em
+
+div.projects
+  // margin: 0px -64px 1em -32px
+  overflow: hidden
+  // margin: 0 0.5em
+
+  h2
+    font-weight: 300
+
+section.project
+  float: left
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  border-width: 8px
+  border-image-width: 16px !important
+  // width: 260px
+  height: 320px
+  margin: 0.5em
+  padding: 0.5em
+  width: 27%
+
+  a
+    text-decoration: none
+    color: inherit
+
+
+  h1
+    text-align: center
+    font-size: fontscale(1)
+    margin-bottom: 0
+    // flex: 0
+
+  img
+    display: block
+    margin: 1em auto
+    max-width: 100%
+    max-height: 140px
+    flex: 1 1 auto
+
+  div
+    flex: 0 1 auto
+
+  div.award
+    font-style: italic
+
+@media only screen and (min-width: 1212px)
+  body
+    padding: 84px 72px 0
+    width: 1068px
+  section.project
+    width: 292px
+    height: 300px
+
+@media only screen and (max-width: 1060px)
+  body > header
+    flex-direction: column
+    align-items: center
+    > h1
+      margin-left: -16px
+    > nav
+      width: 80%
+
+  div.projects
+    // margin: 0 48px
+    margin: 0 0.5em
+  section.project
+    // width: 292px
+    height: 300px
+    width: 40%
 
 
 
+@media only screen and (max-width: 767px)
+  html
+    font-size: 18px
 
-/*
-  Special boxes
-*/
+  #dne
+    transform: scale(0.75)
+    transform-origin: top right
+
+@media only screen and (max-width: 767px) and (min-width: 480px)
+  body
+    padding: 72px 42px 0
+    width: 396px
+    -webkit-text-size-adjust: 100%
+
+
+  section.project
+    width: 85%
+
+  // div.projects
+  //   margin: 0
+
+
+  // body > header > h1
+  //   font-size: fontscale(3)
+  //   // line-height: 42px
+
+  // article,section
+  //   > h1
+  //     font-size: fontscale(2)
+
+@media only screen and (max-width: 479px)
+  article,section
+    border-style: solid
+    border-width: 8px
+    margin: 0px -8px 48px
+    // > h1
+    //   font-size: fontscale(2)
+
+  section.project
+    width: 80%
+
+  body
+    padding: 72px 8px 0
+    // font-size: 0.85em
+    // margin: 0 16px
+    // width: 228px
+    width: 346px
+    overflow-x: hidden
+    // width: 100%
+    -webkit-text-size-adjust: 100%
+
+    > header
+      > h1
+        font-size: fontscale(5)
+        // margin: 0 -16px 24px -16px
+        // border-width: 0 16px 4px 16px
+        margin: 0 -8px 0.5em -8px
+        border-width: 0 0 4px 8px
+        // line-height: 42px
+        // margin: 0 -8px 24px 0
+        // margin-left: 0
+        // margin-right: -8px
+        // margin-bottom: 16px
+        // border-width: 0px 8px 4px 0px
+      > nav
+        width: 90%
+        font-size: fontscale(0.5)
+        > a
+          border-width: 0px 0px 4px 0px
+
 
 #dne
   position: absolute
@@ -107,9 +299,9 @@ article h1,
   text-align: center
   font-family: 'Whiteboard Modern', cursive
   border-style: solid
-  border-width: 0px 0px 12px 12px
+  border-width: 0px 0px 8px 8px
   border-image: url("../images/box-red.png") 48 48 24 24 stretch
-  color: hsla(0, 100%, 70%, 1)
+  color: hsla(0, 100%, 75%, 1)
   user-select: none
 
 #dnecanvas
@@ -119,29 +311,8 @@ article h1,
 
 
 
-body > header > h1
-  huge()
-
-  line-height: 1
-  margin-bottom: 36px
-  color: black
-  //color: RGBA(50,50,255,1)
-  font-family: 'Whiteboard Modern', cursive
-  display: inline-block
-  border-style: solid
-  border-width: 0px 24px 12px 0px
-  border-image: url("../images/underline.png") 0 35 14 0 stretch
-
-  span
-    big()
-
-
-body
-  font-family 'Josefin Sans', sans-serif
-  normal()
-
 wb-border-box(col, size=48)
-  border-image: url("../images/box-"+col+".png") size size size size stretch
+  border-image: url("../images/box-"+col+".png") size / 24px stretch
 
 article:nth-child(3n+1), section:nth-child(3n+1)
   wb-border-box: 'blue'
@@ -174,177 +345,9 @@ article:nth-child(3n), section:nth-child(3n)
     wb-border-box: 'red'
 
 
-h2
-  clear: left
-  margin-top: 24px
-
-h1 a
-  text-decoration: none
-  color: inherit
-
-article,section
-  border-style: solid
-  border-width: 48px 48px 48px 48px
-  margin: 0px -48px
-
-  h1
-    large()
-    font-family 'Josefin Sans', sans-serif
-    margin-bottom: 24px
-
-  > footer
-    margin-top: 24px
-    font-size: 18px
-
-.columns
-  column-width: 288px
-  column-gap: 24px
-  text-align: justify
-
-  > hr
-    column-span: all
-    border: 1px solid transparent
-
-  > h1
-    column-span: all
-
-  > h2
-    big()
-    column-span: all
-    margin: 36px 0px 8px 0px
-
-:not(pre) > code
-  font-family: 'Andale Mono',monospace
-  background-color: rgba(69, 142, 209, 0.04)
-  font-size: 80%
-
-p
-  margin-bottom: 1em
-
-.block
-  display: block
-  margin: 1em auto
-  max-width: 100%
-
-blockquote
-  margin: 1em 2em
-  text-align: justify
-blockquote:before,blockquote:after
-    large()
-    vertical-align: -0.4em
-    line-height: 0.1em
-    font-family: 'Whiteboard Modern',sans-serif
-blockquote:before
-    content: open-quote
-blockquote:after
-    content: close-quote
-
-cite
-  margin-right: 0.1em
-
-dl
-  margin-bottom: 1em
-
-ul
-  margin-bottom: 1em
-  margin-left: 1em
-
-dt
-  font-weight: bold
-
-dd
-  margin-left: 2em
-
-div.projects
-  margin: 0px -64px 1em -32px
-  overflow: hidden
-
-section.project
-  float: left
-  display: flex
-  flex-direction: column
-  justify-content: space-between
-  border-width: 32px
-  width: 260px
-  height: 240px
-  margin: 16px 32px 0px 0px
-
-  a
-    text-decoration: none
-    color: inherit
-
-
-  h1
-    text-align: center
-    font-size: 1.5em
-    margin-bottom: 16px
-    flex: 0
-
-  img
-    display: block
-    margin: 1em auto
-    max-width: 100%
-    max-height: 140px
-    flex: 1 1 auto
-
-  div
-    flex: 0 1 auto
-
-  div.award
-    font-style: italic
-
 @font-face
   font-family: 'Whiteboard Modern'
   src: url('../fonts/whiteboard-modern-webfont.eot?') format('eot'), url('../fonts/whiteboard-modern-webfont.woff') format('woff'), url('../fonts/whiteboard-modern-webfont.ttf') format('truetype'), url('../fonts/whiteboard-modern-webfont.svg#webfontxFGqCYaf') format('svg')
   font-weight: normal
   font-style: normal
 
-body
-  background: white
-  padding: 84px 60px 0
-  width: 648px
-  margin: 0px auto
-
-@media only screen and (min-width: 1212px)
-  body
-    padding: 72px 72px 0
-    width: 1068px
-  section.project
-    width: 292px
-    height: 280px
-
-@media only screen and (max-width: 767px) and (min-width: 480px)
-  body
-    padding: 60px 42px 0
-    width: 396px
-    -webkit-text-size-adjust: 100%
-
-  div.projects
-    margin: 0
-
-  body > header > h1
-    font-size: 48px
-    line-height: 42px
-
-@media only screen and (max-width: 479px)
-  article,section
-    border-style: solid
-    border-width: 32px
-    margin: 0px -64px
-
-  body > header > h1
-    margin-bottom: 24px
-    border-width: 0px 8px 8px 0px
-
-  body
-    padding: 48px 46px 0
-    width: 228px
-    -webkit-text-size-adjust: 100%
-
-  body > header > h1
-    font-size: 48px
-    line-height: 42px
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
-  #example
-    //background: rgb(255,158,97)
